@@ -25,6 +25,10 @@ before_script:
   - php wp-cli.phar core config --dbname=wp --dbuser=root --dbpass="" --path=$WP_INSTALL_PATH
   - php wp-cli.phar core install --url=localhost:8080 --title=test --admin_user=test --admin_password=test --admin_email=admin@local.dev --skip-email --path=$WP_INSTALL_PATH
 
+  # Setup our busted theme
+  - cp -R broken-js-test $WP_INSTALL_PATH/wp-content/themes/
+  - php wp-cli.phar theme activate broken-js-test --path=$WP_INSTALL_PATH
+
   # Start the webserver
   - php wp-cli.phar server --host=0.0.0.0 --path=$WP_INSTALL_PATH &
 
