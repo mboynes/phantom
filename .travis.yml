@@ -17,7 +17,7 @@ before_script:
   - php wp-cli.phar core install --url=localhost:8080 --title=test --admin_user=test --admin_password=test --admin_email=admin@local.dev --skip-email --path=$WP_INSTALL_PATH
 
   # Start the webserver
-  - php wp-cli.phar wp server --path=$WP_INSTALL_PATH &
+  - php wp-cli.phar server --path=$WP_INSTALL_PATH &
 
   # Give the server a chance to boot
   - sleep 5
