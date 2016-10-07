@@ -24,7 +24,7 @@ page.onResourceError = function(resourceError) {
 };
 
 
-page.open('http://localhost:8080', function(status) {
+page.open('http://127.0.0.1:8080', function(status) {
 	console.log("Status: " + status);
 	if (status === "success") {
 		phantom.exit();
