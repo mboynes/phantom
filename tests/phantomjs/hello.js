@@ -11,6 +11,7 @@ page.onError = function(msg, trace) {
 	}
 
 	console.error(msgStack.join('\n'));
+	phantom.exit(1);
 };
 
 phantom.onError = function(msg, trace) {
