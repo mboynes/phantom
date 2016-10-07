@@ -12,17 +12,10 @@ phantom.onError = function(msg, trace) {
 	phantom.exit(1);
 };
 
-page.onResourceRequested = function(request) {
-  console.log('Request ' + JSON.stringify(request, undefined, 4));
-};
-page.onResourceReceived = function(response) {
-  console.log('Receive ' + JSON.stringify(response, undefined, 4));
-};
 page.onResourceError = function(resourceError) {
   console.log('Unable to load resource (#' + resourceError.id + 'URL:' + resourceError.url + ')');
   console.log('Error code: ' + resourceError.errorCode + '. Description: ' + resourceError.errorString);
 };
-
 
 page.open('http://127.0.0.1:8080', function(status) {
 	console.log("Status: " + status);
