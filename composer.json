@@ -1,9 +1,6 @@
 {
     "name": "mboynes/phantom-wordpress-demo",
     "description": "A demo of using PhantomJS with WordPress in Travis CI",
-    "require": {
-        "wp-cli/wp-cli": "^0.24.1"
-    },
     "license": "GPL v2",
     "authors": [
         {

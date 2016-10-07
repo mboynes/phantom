@@ -2,19 +2,34 @@ sudo: false
 
 language: php
 
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+branches:
+  only:
+    - master
+
 php: 7.0
 
-before_script:
-  - composer install
+env: WP_INSTALL_PATH=/tmp/wordpress/
 
-  # Add wp-cli to PATH
-  - export PATH=$PATH:${PWD}/vendor/bin/
+before_script:
+  # Get wp-cli
+  - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+  # Setup WordPress
+  - mysqladmin create wp --user="root" --password=""
+  - php wp-cli.phar core download --path=$WP_INSTALL_PATH
+  - php wp-cli.phar core config --dbname=wp --dbuser=root --dbpass="" --path=$WP_INSTALL_PATH
+  - php wp-cli.phar core install --url=localhost:8080 --title=test --admin_user=test --admin_password=test --admin_email=admin@local.dev --skip-email --path=$WP_INSTALL_PATH
 
   # Start the webserver
-  # - wp server &
+  - php wp-cli.phar server --host=0.0.0.0 --path=$WP_INSTALL_PATH &
 
   # Give the server a chance to boot
-  # - sleep 5
+  - sleep 5
 
 script:
   - phantomjs tests/phantomjs/hello.js
