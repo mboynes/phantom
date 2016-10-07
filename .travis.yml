@@ -35,5 +35,8 @@ before_script:
   # Give the server a chance to boot
   - sleep 5
 
+  # Check phantomjs version
+  - phantomjs -v
+
 script:
   - phantomjs tests/phantomjs/hello.js
