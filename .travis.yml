@@ -1,0 +1,20 @@
+sudo: false
+
+language: php
+
+php: 7.0
+
+before_script:
+  - composer install
+
+  # Add wp-cli to PATH
+  - export PATH=$PATH:${PWD}/vendor/bin/
+
+  # Start the webserver
+  # - wp server &
+
+  # Give the server a chance to boot
+  # - sleep 5
+
+script:
+  - phantomjs tests/phantomjs/hello.js
