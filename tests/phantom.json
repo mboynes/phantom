@@ -1,0 +1,17 @@
+{
+	"domain": "http://127.0.0.1:8080",
+	"pages": [
+		{
+			"name": "Homepage",
+			"url": "/"
+		},
+		{
+			"name": "Article Page",
+			"url": "/hello-world/"
+		},
+		{
+			"name": "404 Page",
+			"url": "/sdfsdfsfd/"
+		}
+	]
+}
