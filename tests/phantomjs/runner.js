@@ -80,7 +80,9 @@ TestRunner = (function() {
         } else {
           console.log(message + " Passed.");
         }
-        return _this.dequeue();
+        return setTimeout(function() {
+          return _this.dequeue();
+        }, 100);
       };
     })(this));
   };

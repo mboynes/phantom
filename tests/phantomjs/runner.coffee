@@ -58,7 +58,9 @@ class TestRunner
 			else
 				console.log "#{message} Passed."
 
-			@dequeue()
+			setTimeout =>
+				@dequeue()
+			, 100
 
 	logError: (message) ->
 		@errors.push "#{@currentTest.name}: #{message}"
