@@ -8,6 +8,10 @@
 		{
 			"name": "Article Page",
 			"url": "/hello-world/"
+		},
+		{
+			"name": "404 Page",
+			"url": "/sdfsdfsfd/"
 		}
 	]
 }
