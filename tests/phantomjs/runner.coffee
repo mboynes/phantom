@@ -2,7 +2,7 @@ page = require('webpage').create()
 fs = require('fs')
 system = require('system')
 
-if system.args.length isnt 2
+if system.args.length is 1
 	console.error 'Usage: runner.js <config.json>'
 	phantom.exit 1
 
@@ -39,7 +39,7 @@ class Test
 
 class TestRunner
 	constructor: (@tests) ->
-		@currentTest = ''
+		@currentTest = null
 		@errors = []
 
 	dequeue: ->
@@ -50,7 +50,7 @@ class TestRunner
 			@doneCallback()
 
 	runTest: ->
-		message = "Running #{@currentTest.name}... "
+		message = "Running #{@currentTest.name}..."
 		page.open @currentTest.getUrl(), (status) =>
 			if status isnt "success"
 				@logError status
@@ -66,7 +66,7 @@ class TestRunner
 	process: (@doneCallback) ->
 		@dequeue()
 
-tests = (new Test(page, config.domain) for page in config.pages)
+tests = (new Test(testable, config.domain) for testable in config.pages)
 runner = new TestRunner tests
 
 runner.process ->
