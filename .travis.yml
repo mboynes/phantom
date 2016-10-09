@@ -24,6 +24,8 @@ before_script:
   - php wp-cli.phar core download --path=$WP_INSTALL_PATH
   - php wp-cli.phar core config --dbname=wp --dbuser=root --dbpass="" --path=$WP_INSTALL_PATH
   - php wp-cli.phar core install --url=localhost:8080 --title=test --admin_user=test --admin_password=test --admin_email=admin@local.dev --skip-email --path=$WP_INSTALL_PATH
+  - php wp-cli.phar rewrite structure '/%postname%/' --path=$WP_INSTALL_PATH
+  - php wp-cli.phar rewrite flush --path=$WP_INSTALL_PATH
 
   # Start the webserver
   - php wp-cli.phar server --host=0.0.0.0 --path=$WP_INSTALL_PATH &
@@ -32,4 +34,5 @@ before_script:
   - sleep 5
 
 script:
-  - phantomjs tests/phantomjs/hello.js
+  - phantomjs tests/phantomjs/url-test.js http://127.0.0.1:8080/ Homepage
+  - phantomjs tests/phantomjs/url-test.js http://127.0.0.1:8080/hello-world/ "Article Page"
