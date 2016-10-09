@@ -35,3 +35,5 @@ before_script:
 script:
   - phantomjs tests/phantomjs/url-test.js http://127.0.0.1:8080/ Homepage
   - phantomjs tests/phantomjs/url-test.js http://127.0.0.1:8080/hello-world/ "Article Page"
+  - phantomjs tests/phantomjs/url-test.js http://127.0.0.1:8080/sdfdfsghgr/ "404 Page"
+  - phantomjs tests/phantomjs/url-test.js http://fake.dev/sdfdfsghgr/ "Invalid request"
